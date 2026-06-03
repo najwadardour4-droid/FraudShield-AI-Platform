@@ -65,18 +65,23 @@ python -m ai.train_credit_card
 python -m ai.train_phishing
 
 # Run API (from backend folder)
-zzz
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 API docs: http://127.0.0.1:8000/docs
 
-### Default login accounts
+### Authorized Access Accounts (Enterprise Domain)
 
-| Email | Password | Role |
-|-------|----------|------|
-| admin@fraudshield.ai | admin123 | admin |
-| najwa@fraudshield.ai | agent123 | analyst |
-| analyst@fraudshield.ai | analyst123 | analyst |
+All accounts use the password: **admin123**
+
+| Email | Role / Agent | Access Level |
+|-------|--------------|--------------|
+| **admin@fraudshield.ai** | Platform Admin | Full Dashboard |
+| **najwa@fraudshield.ai** | CC Investigator | Agent Interface |
+| **ferdaouss@fraudshield.ai** | Phishing Scanner | Agent Interface |
+| **alae@fraudshield.ai** | Document Verifier | Agent Interface |
+
+---
 
 ## Frontend setup
 
@@ -86,7 +91,7 @@ npm install
 npm start
 ```
 
-Open http://localhost:4200 — sign in with `admin@fraudshield.ai` / `admin123`.
+Open http://localhost:4200 — sign in with your enterprise `@fraudshield.ai` account.
 
 ## API endpoints (`/api/v1`)
 

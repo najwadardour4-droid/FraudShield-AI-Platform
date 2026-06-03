@@ -2,13 +2,21 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { LucideShield, LucideMail, LucideLock, LucideCreditCard, LucideSearch, LucideFileText } from '@lucide/angular';
+import { LucideShield, LucideMail, LucideLock, LucideAlertCircle, LucideShieldCheck } from '@lucide/angular';
 import { ParticleFieldComponent } from '../../components/particle-field/particle-field.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, LucideShield, LucideMail, LucideLock, LucideCreditCard, LucideSearch, LucideFileText, ParticleFieldComponent],
+  imports: [
+    FormsModule, 
+    LucideShield, 
+    LucideMail, 
+    LucideLock, 
+    LucideAlertCircle, 
+    LucideShieldCheck, 
+    ParticleFieldComponent
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

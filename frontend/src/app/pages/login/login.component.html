@@ -1,103 +1,104 @@
-<div class="login-page">
-  <app-particle-field class="background-particles"></app-particle-field>
-  
-  <div class="login-card">
-    <div class="login-header">
-      <div class="logo-container">
-        <svg lucideShield size="48" class="logo-icon"></svg>
-      </div>
-      <h1>FRAUDSHIELD</h1>
-      <p class="subtitle">Multi-Agent AI Fraud Intelligence</p>
-    </div>
-
-    <form (ngSubmit)="submit()">
-      <div class="input-group">
-        <label for="email">Email Address</label>
-        <div class="input-wrapper">
-          <svg lucideMail size="18" class="input-icon"></svg>
-          <input 
-            id="email"
-            type="email" 
-            [(ngModel)]="email" 
-            name="email" 
-            required 
-            autocomplete="username" 
-            placeholder="username@fraudshield.ai"
-          />
+<div class="login-container">
+  <!-- LEFT SIDE: AUTH FORM -->
+  <div class="auth-section">
+    <div class="auth-content">
+      <header class="brand">
+        <svg lucideShield size="32" class="brand-icon"></svg>
+        <div class="brand-text">
+          <h1>FraudShield AI</h1>
+          <p>Multi-Agent Fraud Intelligence Platform</p>
         </div>
-        <span class="input-helper">* Access restricted to authorized &#64;fraudshield.ai personnel only.</span>
-      </div>
+      </header>
 
-      <div class="input-group">
-        <label for="password">Password</label>
-        <div class="input-wrapper">
-          <svg lucideLock size="18" class="input-icon"></svg>
-          <input 
-            id="password"
-            type="password" 
-            [(ngModel)]="password" 
-            name="password" 
-            required 
-            autocomplete="current-password"
-            placeholder="••••••••"
-          />
-        </div>
-      </div>
+      <main class="login-form">
+        <form (ngSubmit)="submit()">
+          <div class="input-group">
+            <label for="email">Enterprise Email</label>
+            <div class="input-field">
+              <svg lucideMail size="18"></svg>
+              <input 
+                id="email"
+                type="email" 
+                [(ngModel)]="email" 
+                name="email" 
+                required 
+                placeholder="username@fraudshield.ai"
+              />
+            </div>
+          </div>
 
-      @if (error()) {
-        <div class="error-box">
-          <p>{{ error() }}</p>
-        </div>
-      }
+          <div class="input-group">
+            <label for="password">Security Token</label>
+            <div class="input-field">
+              <svg lucideLock size="18"></svg>
+              <input 
+                id="password"
+                type="password" 
+                [(ngModel)]="password" 
+                name="password" 
+                required 
+                placeholder="••••••••"
+              />
+            </div>
+          </div>
 
-      <button type="submit" class="btn-primary" [disabled]="loading()">
-        <span class="btn-content">
-          @if (loading()) {
-            <span class="spinner"></span>
-            Authenticating...
-          } @else {
-            Access Platform
+          @if (error()) {
+            <div class="error-message">
+              <svg lucideAlertCircle size="14"></svg>
+              <span>{{ error() }}</span>
+            </div>
           }
-        </span>
-      </button>
-    </form>
 
-    <div class="divider">
-      <span>AI AGENTS PREVIEW</span>
+          <button type="submit" class="cta-button" [disabled]="loading()">
+            @if (loading()) {
+              <span class="spinner"></span>
+              Authenticating...
+            } @else {
+              Access Platform
+            }
+          </button>
+        </form>
+      </main>
+
+      <footer>
+        <p class="security-notice">
+          <svg lucideShieldCheck size="12"></svg>
+          Authorized Personnel Only
+        </p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE: PREMIUM VISUAL -->
+  <div class="visual-section">
+    <app-particle-field class="visual-particles"></app-particle-field>
+    <div class="visual-overlay"></div>
+    
+    <div class="visual-content">
+      <div class="hero-shield">
+        <div class="shield-outer"></div>
+        <div class="shield-inner"></div>
+        <svg lucideShield size="120" class="main-shield-icon"></svg>
+      </div>
+      
+      <div class="hero-text">
+        <h2>Advanced Multi-Agent AI Fraud Intelligence Ecosystem</h2>
+        <p>
+          Centralized fraud detection, phishing analysis, document verification, 
+          and explainable AI decision support for enterprise operations.
+        </p>
+      </div>
+
+      <div class="tech-badges">
+        <span class="badge">XGBOOST</span>
+        <span class="badge">NLP</span>
+        <span class="badge">CNN</span>
+        <span class="badge">LLM</span>
+      </div>
     </div>
 
-    <div class="agents-grid">
-      <div class="agent-item">
-        <div class="agent-icon-wrapper najwa">
-          <svg lucideCreditCard size="16"></svg>
-        </div>
-        <div class="agent-info">
-          <span class="agent-name">Najwa</span>
-          <span class="agent-desc">Credit Card Investigator</span>
-        </div>
-      </div>
-      <div class="agent-item">
-        <div class="agent-icon-wrapper ferdaouss">
-          <svg lucideSearch size="16"></svg>
-        </div>
-        <div class="agent-info">
-          <span class="agent-name">Ferdaouss</span>
-          <span class="agent-desc">Phishing NLP Scanner</span>
-        </div>
-      </div>
-      <div class="agent-item">
-        <div class="agent-icon-wrapper alae">
-          <svg lucideFileText size="16"></svg>
-        </div>
-        <div class="agent-info">
-          <span class="agent-name">Alae</span>
-          <span class="agent-desc">Document CNN Verifier</span>
-        </div>
-      </div>
-    </div>
-
-    <p class="demo-hint">
-      Authorized Access: <strong>*&#64;fraudshield.ai</strong> (Pass: admin123)
-    </p>
+    <!-- Futuristic Graphics -->
+    <div class="grid-background"></div>
+    <div class="scanner-line"></div>
   </div>
 </div>

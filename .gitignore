@@ -8,19 +8,29 @@ ENV/
 env/
 .env
 *.db
+backend/.env
+backend/fraud_platform.db
 
 # Node
 node_modules/
 dist/
 .angular/
 .vscode/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
 
 # Models & Data
 *.pkl
 *.pt
 *.joblib
+backend/ml_models/*.pkl
+backend/ml_models/*.pt
+backend/ml_models/*.joblib
 nltk_data/
+backend/nltk_data/
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
