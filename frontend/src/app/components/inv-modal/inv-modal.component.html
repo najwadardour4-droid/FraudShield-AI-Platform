@@ -1,0 +1,42 @@
+<div class="inv-backdrop" (click)="close.emit()">
+  <div class="inv-card card-cyber" (click)="$event.stopPropagation()">
+    <div class="inv-header">
+      <div>
+        <div class="small">ANALYSE CNN · RÉSULTAT</div>
+        <div class="id">{{inv?.id}}</div>
+        <div class="meta">{{inv?.vendor}} · {{inv?.date}}</div>
+      </div>
+      <button class="btn-close" (click)="close.emit()">ESC</button>
+    </div>
+
+    <div class="inv-grid">
+      <div class="inv-left card-cyber">
+        <app-score-ring [score]="inv?.score" [size]="88"></app-score-ring>
+        <div class="status">{{statusLabel(inv?.status)}}</div>
+      </div>
+      <div class="inv-right card-cyber">
+        <div *ngFor="let pair of [['Fournisseur',inv?.vendor],['Montant',fmtEur(inv?.amount)],['Date',inv?.date],['Modèle','CNN v3.2']]" style="display:flex;justify-content:space-between;margin-bottom:8px">
+          <span class="k">{{pair[0]}}</span>
+          <span class="v">{{pair[1]}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="inv?.features?.length" class="features">
+      <div class="small">ANOMALIES VISUELLES</div>
+      <div class="chips">
+        <span *ngFor="let f of inv.features" class="chip">{{f}}</span>
+      </div>
+    </div>
+
+    <div class="heatmap card-cyber">
+      <div class="small">HEATMAP GRADCAM</div>
+      <div style="margin-top:8px">(Preview)</div>
+    </div>
+
+    <div class="inv-actions">
+      <button class="btn-primary" *ngIf="inv?.score >= 70" style="border-color:#FF4D6A;color:#FF4D6A">🚫 BLOQUER</button>
+      <button class="btn-primary">📥 RAPPORT PDF</button>
+    </div>
+  </div>
+</div>

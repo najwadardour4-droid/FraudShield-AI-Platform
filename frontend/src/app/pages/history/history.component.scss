@@ -1,0 +1,45 @@
+.filters {
+  margin-bottom: 1rem;
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+
+  select {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+  }
+}
+
+.summary {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+
+  th,
+  td {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+}

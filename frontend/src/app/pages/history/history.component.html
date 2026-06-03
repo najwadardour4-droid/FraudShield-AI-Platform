@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>Prediction history</h1>
+  <p>Audit trail of all agent decisions</p>
+</div>
+
+<div class="panel filters">
+  <div class="filter-group">
+    <svg lucideSearch size="18"></svg>
+    <label>
+      Filter by agent
+...
+      <select [(ngModel)]="filter" (ngModelChange)="load()">
+        <option value="">All agents</option>
+        <option value="credit_card">Credit card</option>
+        <option value="phishing">Phishing</option>
+        <option value="document">Document</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+@if (loading()) {
+  <p class="muted">Loading…</p>
+} @else {
+  <div class="panel">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Agent</th>
+          <th>Verdict</th>
+          <th>Confidence</th>
+          <th>Summary</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of items(); track row.id) {
+          <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ agentLabel(row.agent_type) }}</td>
+            <td>{{ row.verdict }}</td>
+            <td>{{ (row.confidence * 100) | number:'1.0-0' }}%</td>
+            <td class="summary">{{ row.input_summary }}</td>
+            <td>{{ row.created_at | date:'short' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    @if (!items().length) {
+      <p class="muted">No predictions recorded yet.</p>
+    }
+  </div>
+}

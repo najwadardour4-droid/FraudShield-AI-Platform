@@ -1,0 +1,51 @@
+<div class="invoice-guard-root">
+  <div class="login-screen">
+      <div class="left-panel">
+      <app-particle-field></app-particle-field>
+      <div class="logo">🛡</div>
+      <h1 class="title">INVOICEGUARD<br/><span>sécurisée</span></h1>
+      <div class="ticker">CNN · ANTI-FRAUDE · v3.2</div>
+    </div>
+
+    <div class="right-panel">
+      <div class="auth">
+        <div class="role-tabs">
+          <button [class.active]="role==='user'" (click)="switchRole('user')">UTILISATEUR</button>
+          <button [class.active]="role==='admin'" (click)="switchRole('admin')">ADMIN</button>
+        </div>
+
+        <div class="fields">
+          <label>IDENTIFIANT</label>
+          <input class="input-cyber" [(ngModel)]="form.email" (focus)="focused='email'" (blur)="focused=null" />
+          <label>MOT DE PASSE</label>
+          <input class="input-cyber" type="password" [(ngModel)]="form.password" (focus)="focused='password'" (blur)="focused=null" />
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" (click)="handleLogin()" [disabled]="loading">
+            <span *ngIf="!loading">ACCÉDER AU SYSTÈME →</span>
+            <span *ngIf="loading">VÉRIFICATION…</span>
+          </button>
+        </div>
+
+        <div class="demo">démo · admin@invoiceguard.ai · alice@corp.ma</div>
+      </div>
+
+      <div class="analyze" style="margin-top:24px">
+        <h2>ANALYSER UNE FACTURE</h2>
+        <div class="upload-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (click)="fileInput.click()">
+          <input #fileInput type="file" accept=".pdf,.png,.jpg,.jpeg" (change)="onFileSelected($event)" style="display:none" />
+          <div class="icon">📄</div>
+          <div class="label">DÉPOSER UNE FACTURE</div>
+          <div class="sub">PDF · PNG · JPG · Max 10 Mo</div>
+          <button class="btn-primary" style="margin-top:12px">PARCOURIR</button>
+        </div>
+        
+        <!-- Demo GradCAM preview -->
+        <div style="margin-top:12px">
+          <app-grad-cam [invoiceId]="'FACT-2026-00891'"></app-grad-cam>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

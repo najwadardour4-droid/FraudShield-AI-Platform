@@ -1,0 +1,62 @@
+<div class="p-6">
+
+  <h1 class="text-3xl font-bold mb-6 text-cyan-400">
+    Credit Card Investigator
+  </h1>
+
+  <div class="grid gap-3">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.amount"
+      placeholder="Amount">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.hour_of_day"
+      placeholder="Hour of Day">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.distance_from_home_km"
+      placeholder="Distance from Home">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.v1"
+      placeholder="V1">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.v2"
+      placeholder="V2">
+
+    <input
+      type="number"
+      [(ngModel)]="transaction.v3"
+      placeholder="V3">
+
+    <button
+      (click)="analyze()">
+      Analyze Transaction
+    </button>
+
+  </div>
+
+  <div *ngIf="result" class="mt-6">
+
+    <h2>
+      Verdict: {{ result.verdict }}
+    </h2>
+
+    <p>
+      Confidence: {{ result.confidence }}
+    </p>
+
+    <p>
+      Risk Score: {{ result.risk_score }}
+    </p>
+
+  </div>
+
+</div>

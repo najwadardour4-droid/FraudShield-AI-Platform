@@ -1,0 +1,20 @@
+<div class="scanline"></div>
+
+<div class="dashboard-container">
+  <h2 style="font-family: 'Orbitron'; color: var(--teal);">
+    AGENT IA : DÉTECTION FRAUDE
+  </h2>
+
+  <div class="grid">
+    @for (inv of invoices; track inv.id) {
+      <div class="card-cyber">
+        <div style="display: flex; justify-content: space-between;">
+          <span>{{ inv.id }}</span>
+          <span [style.color]="getScoreColor(inv.score)">{{ inv.score }}%</span>
+        </div>
+        <p>{{ inv.vendor }}</p>
+        <strong>{{ inv.amount }} €</strong>
+      </div>
+    }
+  </div>
+</div>

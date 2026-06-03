@@ -1,0 +1,117 @@
+.result-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.4);
+  position: relative;
+  
+  &.risk {
+    border-color: var(--danger-border);
+    background: var(--danger-soft);
+    .verdict { color: var(--danger); }
+  }
+
+  &.safe {
+    border-color: var(--success-border);
+    background: var(--success-soft);
+    .verdict { color: var(--success); }
+  }
+}
+
+.verdict {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: 2px;
+}
+
+.confidence-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+
+  .fill {
+    height: 100%;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    transition: width 0.5s ease-out;
+  }
+}
+
+.explanation {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  
+  strong {
+    color: var(--text);
+  }
+}
+
+.meta {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.shap-viz {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+
+  .shap-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .shap-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .shap-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 60px;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+
+    .f-name { color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; }
+    
+    .f-bar-track {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 2px;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .f-bar-fill {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 1s ease-out;
+        
+        &.pos { background: var(--danger); box-shadow: 0 0 5px var(--danger); }
+        &.neg { background: var(--success); box-shadow: 0 0 5px var(--success); }
+      }
+    }
+
+    .f-val { text-align: right; color: var(--muted); }
+  }
+}

@@ -1,0 +1,167 @@
+<div class="cyber-dashboard">
+  <!-- Top Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-panel accuracy-panel">
+      <div class="panel-header">
+        <svg lucideActivity size="14"></svg>
+        <span>SYSTEM ACCURACY</span>
+      </div>
+      <div class="gauge-container">
+        <div class="gauge">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" class="gauge-bg"></circle>
+            <circle cx="50" cy="50" r="45" class="gauge-fill" 
+              [style.stroke-dashoffset]="282.7 - (282.7 * 0.977)"></circle>
+          </svg>
+          <div class="gauge-value">
+            <span class="value">97.7%</span>
+            <span class="label">NETWORK STRENGTH</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <div class="meta-item">
+          <span class="meta-label">UPTIME</span>
+          <span class="meta-value">99.98%</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">LATENCY</span>
+          <span class="meta-value">12ms</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">THREAT LEVEL</span>
+          <span class="meta-value elevated">ELEVATED</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-panel monitoring-panel">
+      <div class="panel-header">
+        <svg lucideActivity size="14"></svg>
+        <span>LIVE COMMUNICATION MONITORING</span>
+        <div class="threat-tag">THREAT ACTIVE</div>
+      </div>
+      <div class="monitoring-content">
+        <div class="wave-display">
+          <div class="rec-indicator">
+            <span class="rec-dot"></span>
+            REC 00:47:23
+          </div>
+          <div class="neural-status">NEURAL NET: ACTIVE</div>
+          <div class="waveform">
+            @for (h of waveformBars(); track $index) {
+              <div class="bar" [style.height.%]="h"></div>
+            }
+          </div>
+          <div class="integrity-card">
+            <div class="card-header">NEURAL INTEGRITY</div>
+            <div class="card-value">99.0% AUTHENTIC</div>
+            <div class="mini-wave"></div>
+          </div>
+        </div>
+        <div class="scan-progress">
+          <div class="progress-label">
+            <span>SCAN PROGRESS</span>
+            <span>46%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 46%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI Cards Row -->
+  <div class="kpi-grid">
+    @if (analytics(); as a) {
+      <div class="kpi-card">
+        <div class="kpi-icon"><svg lucideActivity></svg></div>
+        <div class="kpi-content">
+          <span class="kpi-label">TOTAL PREDICTIONS</span>
+          <span class="kpi-value">{{ a.total_predictions }}</span>
+        </div>
+      </div>
+      <div class="kpi-card danger">
+        <div class="kpi-icon"><svg lucideAlertTriangle></svg></div>
+        <div class="kpi-content">
+          <span class="kpi-label">FLAGGED ALERTS</span>
+          <span class="kpi-value">{{ a.total_flagged }}</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><svg lucideTrendingUp></svg></div>
+        <div class="kpi-content">
+          <span class="kpi-label">DETECTION RATE</span>
+          <span class="kpi-value">98.4%</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Main Grid Bottom -->
+  <div class="bottom-grid">
+    <section class="panel data-stream">
+      <div class="panel-header">
+        <svg lucideActivity size="14"></svg>
+        <span>INTELLIGENT MULTI-AGENT COLLABORATION</span>
+      </div>
+      <div class="stream-content">
+        <!-- Collaboration Logs -->
+        <div class="collaboration-log">
+          <div class="log-entry info">
+            <span class="l-tag">[SYSTEM]</span>
+            <span class="l-msg">Orchestrator active. Cross-agent communication synchronized.</span>
+          </div>
+          <div class="log-entry alert">
+            <span class="l-tag">[PHISHING_SCANNER]</span>
+            <span class="l-msg">Detected suspicious source IP 192.168.1.105 (Ferdaouss)</span>
+          </div>
+          <div class="log-entry action">
+            <span class="l-tag">[COLLABORATION]</span>
+            <span class="l-msg">Alerting CreditCardInvestigator to flag high-risk transactions from IP source.</span>
+          </div>
+          <div class="log-entry info">
+            <span class="l-tag">[DOCUMENT_VERIFIER]</span>
+            <span class="l-msg">Scan complete: Verification results pushed to unified Audit Log.</span>
+          </div>
+        </div>
+        
+        <div class="divider"></div>
+
+        @if (analytics(); as a) {
+          @for (r of a.recent_flagged; track r.id) {
+            <div class="stream-item">
+              <span class="timestamp">[{{ r.created_at | date:'HH:mm:ss' }}]</span>
+              <span class="agent-tag">{{ agentLabel(r.agent) }}</span>
+              <span class="verdict-tag" [class.danger]="true">{{ r.verdict }}</span>
+              <span class="summary">{{ r.summary }}</span>
+            </div>
+          }
+        }
+      </div>
+    </section>
+
+    <section class="panel control-panel">
+      <div class="panel-header">
+        <svg lucideTrendingUp size="14"></svg>
+        <span>AGENT EFFICIENCY</span>
+      </div>
+      <div class="efficiency-list">
+        @if (analytics(); as a) {
+          @for (row of a.by_agent; track row.agent) {
+            <div class="efficiency-item">
+              <div class="item-info">
+                <span class="label">{{ agentLabel(row.agent) }}</span>
+                <span class="value">{{ barWidth(row.flagged, row.total) }}%</span>
+              </div>
+              <div class="mini-bar">
+                <div class="mini-fill" [style.width.%]="barWidth(row.flagged, row.total)"></div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </section>
+  </div>
+</div>

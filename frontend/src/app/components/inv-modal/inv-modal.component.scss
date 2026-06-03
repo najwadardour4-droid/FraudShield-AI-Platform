@@ -1,0 +1,14 @@
+.inv-backdrop { position:fixed; inset:0; background:rgba(2,5,9,.92); display:flex; align-items:center; justify-content:center; z-index:1000; backdrop-filter:blur(4px); padding:20px }
+.inv-card { max-width:580px; width:100%; max-height:90vh; overflow:auto; padding:24px; border-radius:6px; border:1px solid rgba(255,255,255,.06) }
+.inv-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px }
+.id { font-family:'Orbitron',monospace; font-weight:700; font-size:16px }
+.meta { font-size:13px; color:var(--txt2); margin-top:4px }
+.inv-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px }
+.inv-left { display:flex; flex-direction:column; align-items:center; gap:8px; padding:14px }
+.status { font-size:9px; font-family:'Orbitron',monospace; letter-spacing:1.5px }
+.inv-right { padding:14px }
+.small { font-size:10px; color:var(--txt3); font-family:'Orbitron',monospace }
+.chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px }
+.chip { font-size:10px; color:#FF4D6A; background:rgba(255,77,106,.1); border:1px solid rgba(255,77,106,.3); border-radius:3px; padding:3px 10px }
+.inv-actions { display:flex; gap:10px; margin-top:12px }
+.btn-close { background:transparent; border:1px solid var(--border2); color:var(--txt2); padding:6px 12px; border-radius:4px }

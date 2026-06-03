@@ -1,0 +1,39 @@
+@if (result(); as r) {
+  <div class="result-card" [class.risk]="isRisk()" [class.safe]="!isRisk()">
+    <div class="verdict">{{ result().verdict }}</div>
+    
+    <div class="explanation" [innerHTML]="result().explanation"></div>
+
+    <div class="confidence-bar">
+    <div class="fill" [style.width.%]="result().confidence * 100"></div>
+  </div>
+
+  @if (shapFeatures().length) {
+    <div class="shap-viz">
+      <div class="shap-header">SHAP INFLUENCE (TOP 5)</div>
+      <div class="shap-bars">
+        @for (f of shapFeatures(); track f.name) {
+          <div class="shap-row">
+            <span class="f-name">{{ f.name }}</span>
+            <div class="f-bar-track">
+              <div class="f-bar-fill" 
+                [class.pos]="f.value > 0" 
+                [class.neg]="f.value <= 0"
+                [style.width.%]="Math.min(Math.abs(f.value) * 100, 100)">
+              </div>
+            </div>
+            <span class="f-val">{{ f.value > 0 ? '+' : '' }}{{ f.value | number:'1.2-2' }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+    <div class="meta">
+      <span>CONFIDENCE: {{ (result().confidence * 100) | number:'1.1-1' }}%</span>
+      @if (result().record_id) {
+        <span>LOG_ID: #{{ result().record_id }}</span>
+      }
+    </div>
+  </div>
+}

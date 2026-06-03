@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Alae — Document Verifier</h1>
+  <p>CNN-based authenticity check for IDs, invoices, and certificates</p>
+</div>
+
+<div class="agent-layout">
+  <div
+    class="panel dropzone"
+    (drop)="onDrop($event)"
+    (dragover)="$event.preventDefault()"
+  >
+    <input type="file" accept="image/*" (change)="onFile($event)" id="doc-file" hidden />
+    <label for="doc-file" class="drop-label">
+      <span class="icon">📤</span>
+      <strong>Drop image or click to upload</strong>
+      <small>PNG, JPG — invoices, ID cards, receipts</small>
+    </label>
+    @if (preview()) {
+      <img [src]="preview()!" alt="Preview" class="preview" />
+    }
+    @if (loading()) { <p class="muted">Analyzing document…</p> }
+    @if (error()) { <p class="error">{{ error() }}</p> }
+  </div>
+
+  <div class="panel">
+    <h2>Result</h2>
+    @if (result()) {
+      <app-prediction-result [result]="result()!" />
+    } @else {
+      <p class="muted">Upload a document to verify authenticity.</p>
+    }
+  </div>
+</div>

@@ -1,0 +1,108 @@
+@use '../agent-shared' as *;
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 242, 255, 0.05);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 2rem;
+
+  &:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    .upload-icon { transform: translateY(-5px); }
+  }
+
+  .upload-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+  }
+
+  span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+  }
+}
+
+.doc-preview-container {
+  position: relative;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .doc-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    opacity: 0.8;
+  }
+
+  .bounding-box {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 15px var(--primary);
+    pointer-events: none;
+    
+    &.fake {
+      border-color: var(--danger);
+      box-shadow: 0 0 15px var(--danger);
+      background: var(--danger-soft);
+      
+      .box-label { color: var(--danger); }
+      .scan-line-horizontal { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+    }
+
+    .box-label {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .scan-line-horizontal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      animation: scan-v 2.5s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes scan-v {
+  0% { top: 0; opacity: 0.2; }
+  50% { top: 100%; opacity: 1; }
+  100% { top: 0; opacity: 0.2; }
+}

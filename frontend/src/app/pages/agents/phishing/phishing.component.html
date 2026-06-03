@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1>Ferdaouss — Phishing Scanner</h1>
+  <p>NLP classification of emails, SMS, and messages with LLM explanation</p>
+</div>
+
+<div class="agent-layout">
+  <form class="panel form-panel" (ngSubmit)="analyze()">
+    <div class="panel-header-mini">SCAN PARAMETERS</div>
+    
+    <div class="channel-selector">
+      <label class="radio-label">
+        <input type="radio" name="channel" value="email" [(ngModel)]="channel" />
+        <span>EMAIL</span>
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="channel" value="sms" [(ngModel)]="channel" />
+        <span>SMS</span>
+      </label>
+    </div>
+
+    <label>
+      CONTENT TO ANALYZE
+      <textarea [(ngModel)]="text" name="text" rows="6" placeholder="Paste suspicious text or upload a file below..."></textarea>
+    </label>
+    
+    <div class="file-upload-zone">
+      <input type="file" id="eml-upload" (change)="onFileSelected($event)" accept=".eml,.msg" hidden />
+      <label for="eml-upload" class="upload-btn">
+        <svg lucideMail size="16"></svg>
+        UPLOAD .EML / .MSG FILE
+      </label>
+      <span class="file-hint">Analyzes full email headers & body</span>
+    </div>
+
+    @if (error()) { <p class="error">{{ error() }}</p> }
+    <button type="submit" class="btn-primary" [disabled]="loading()">
+      {{ loading() ? 'Scanning…' : 'Scan for phishing' }}
+    </button>
+  </form>
+
+  <div class="panel">
+    <h2>Result</h2>
+    @if (result()) {
+      <app-prediction-result [result]="result()!" />
+    } @else {
+      <p class="muted">Paste a suspicious message to analyze.</p>
+    }
+  </div>
+</div>

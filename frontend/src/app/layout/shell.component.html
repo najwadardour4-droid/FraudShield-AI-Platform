@@ -1,0 +1,74 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <svg lucideShield size="32" class="neon-text"></svg>
+      <span class="mode-label">MODE SELECT</span>
+    </div>
+    
+    <nav>
+      @for (item of nav; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" [title]="item.label">
+          <ng-container *ngComponentOutlet="$any(item.icon); inputs: { size: 24 }"></ng-container>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="sidebar-footer">
+      <button type="button" class="logout-btn" (click)="auth.logout()" title="Sign Out">
+        <svg lucideLogOut size="20"></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="main-header">
+      <div class="header-left">
+        <div class="branding">
+          <svg lucideShield size="32" class="neon-text"></svg>
+          <div class="title-group">
+            <h1 class="main-title">FRAUDSHIELD AI</h1>
+            <p class="subtitle">CYBER-OPS COMMAND CENTER // NEURAL DEFENSE PROTOCOL ACTIVE</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="status-indicator">
+          <div class="live-tag">
+            <span class="dot"></span>
+            LIVE MONITORING
+          </div>
+          <div class="system-time">
+            <span class="time-label">SYSTEM TIME</span>
+            <span class="time-value">{{ systemTime }}</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+    
+    <footer class="system-footer">
+      <div class="status-bar">
+        <div class="status-item">
+          <svg lucideCpu size="14"></svg>
+          <span>NEURAL NETWORK: OPTIMAL</span>
+        </div>
+        <div class="status-item">
+          <svg lucideLock size="14"></svg>
+          <span>ENCRYPTION: AES-256</span>
+        </div>
+        <div class="status-item">
+          <svg lucideWifi size="14"></svg>
+          <span>UPLINK: ACTIVE</span>
+        </div>
+      </div>
+      <div class="user-info">
+        <span>OPERATOR: {{ auth.user()?.full_name }}</span>
+      </div>
+    </footer>
+  </div>
+</div>

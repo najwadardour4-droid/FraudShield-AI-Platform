@@ -1,0 +1,103 @@
+<div class="login-page">
+  <app-particle-field class="background-particles"></app-particle-field>
+  
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-container">
+        <svg lucideShield size="48" class="logo-icon"></svg>
+      </div>
+      <h1>FRAUDSHIELD</h1>
+      <p class="subtitle">Multi-Agent AI Fraud Intelligence</p>
+    </div>
+
+    <form (ngSubmit)="submit()">
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+          <svg lucideMail size="18" class="input-icon"></svg>
+          <input 
+            id="email"
+            type="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            required 
+            autocomplete="username" 
+            placeholder="username@fraudshield.ai"
+          />
+        </div>
+        <span class="input-helper">* Access restricted to authorized &#64;fraudshield.ai personnel only.</span>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <svg lucideLock size="18" class="input-icon"></svg>
+          <input 
+            id="password"
+            type="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            required 
+            autocomplete="current-password"
+            placeholder="••••••••"
+          />
+        </div>
+      </div>
+
+      @if (error()) {
+        <div class="error-box">
+          <p>{{ error() }}</p>
+        </div>
+      }
+
+      <button type="submit" class="btn-primary" [disabled]="loading()">
+        <span class="btn-content">
+          @if (loading()) {
+            <span class="spinner"></span>
+            Authenticating...
+          } @else {
+            Access Platform
+          }
+        </span>
+      </button>
+    </form>
+
+    <div class="divider">
+      <span>AI AGENTS PREVIEW</span>
+    </div>
+
+    <div class="agents-grid">
+      <div class="agent-item">
+        <div class="agent-icon-wrapper najwa">
+          <svg lucideCreditCard size="16"></svg>
+        </div>
+        <div class="agent-info">
+          <span class="agent-name">Najwa</span>
+          <span class="agent-desc">Credit Card Investigator</span>
+        </div>
+      </div>
+      <div class="agent-item">
+        <div class="agent-icon-wrapper ferdaouss">
+          <svg lucideSearch size="16"></svg>
+        </div>
+        <div class="agent-info">
+          <span class="agent-name">Ferdaouss</span>
+          <span class="agent-desc">Phishing NLP Scanner</span>
+        </div>
+      </div>
+      <div class="agent-item">
+        <div class="agent-icon-wrapper alae">
+          <svg lucideFileText size="16"></svg>
+        </div>
+        <div class="agent-info">
+          <span class="agent-name">Alae</span>
+          <span class="agent-desc">Document CNN Verifier</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-hint">
+      Authorized Access: <strong>*&#64;fraudshield.ai</strong> (Pass: admin123)
+    </p>
+  </div>
+</div>

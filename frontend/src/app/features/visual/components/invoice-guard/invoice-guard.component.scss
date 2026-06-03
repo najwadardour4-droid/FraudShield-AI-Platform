@@ -1,0 +1,17 @@
+.invoice-guard-root { color: var(--txt); font-family: 'Syne', sans-serif; }
+.login-screen { display:flex; min-height:70vh; gap:24px; }
+.left-panel { flex:0 0 40%; background:var(--bg2); padding:28px; border-radius:8px; }
+.right-panel { flex:1; padding:12px 8px; }
+.logo { font-size:36px; margin-bottom:12px }
+.title { font-family: 'Orbitron', monospace; font-size:22px; margin-bottom:6px }
+.title span { color:var(--teal); text-shadow: 0 0 10px rgba(0,255,209,.4) }
+.ticker { font-family: 'JetBrains Mono', monospace; color:var(--txt2); margin-bottom:18px }
+.role-tabs { display:flex; gap:6px; margin-bottom:18px }
+.role-tabs button { flex:1; padding:8px; background:transparent; border:1px solid var(--border); color:var(--txt2); cursor:pointer }
+.role-tabs button.active { background:var(--teal); color:var(--bg) }
+.fields { display:flex; flex-direction:column; gap:10px; margin-bottom:12px }
+.upload-zone { border:1px dashed var(--border2); padding:24px; text-align:center; border-radius:8px; cursor:pointer; background:rgba(0,255,209,.02) }
+.upload-zone input { display:none }
+.upload-zone .icon { font-size:40px; margin-bottom:8px }
+.upload-zone .label { font-family:'Orbitron',monospace; font-weight:700; margin-bottom:6px }
+.demo { margin-top:12px; font-family:'JetBrains Mono',monospace; color:var(--txt3) }

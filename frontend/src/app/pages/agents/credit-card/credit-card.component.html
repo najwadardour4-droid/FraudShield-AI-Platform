@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>CREDIT CARD INVESTIGATOR</h1>
+  <p>XGBOOST // SHAP // NEURAL NARRATIVE ACTIVE</p>
+</div>
+
+<div class="agent-layout">
+  <div class="panel form-panel">
+    @if (step() === 'card') {
+      <div class="panel-header-mini">IDENTITY VERIFICATION</div>
+      <form (ngSubmit)="verifyCard()">
+        <label>
+          CARD NUMBER (16 DIGITS)
+          <input type="text" [(ngModel)]="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required />
+        </label>
+        @if (error()) { <p class="error">{{ error() }}</p> }
+        <button type="submit" class="btn-primary">CONTINUE TO PARAMETERS</button>
+      </form>
+    } @else {
+      <div class="panel-header-mini">TRANSACTION PARAMETERS</div>
+      <form (ngSubmit)="analyze()">
+        <div class="card-ref">
+          <span class="muted">CARD:</span> {{ cardNumber }} 
+          <button type="button" class="btn-link" (click)="reset()">CHANGE</button>
+        </div>
+        <div class="grid-2">
+          <label>AMOUNT (MAD) <input type="number" [(ngModel)]="form.amount" name="amount" required /></label>
+          <label>MERCHANT CATEGORY <input [(ngModel)]="form.merchant_category" name="mcc" required /></label>
+          <label>HOUR OF DAY <input type="number" [(ngModel)]="form.hour_of_day" name="hour" min="0" max="23" /></label>
+          <label>DISTANCE FROM HOME <input type="number" [(ngModel)]="form.distance_from_home_km" name="dist" /></label>
+          <label>PCA V1 <input type="number" step="0.01" [(ngModel)]="form.v1" name="v1" /></label>
+          <label>PCA V2 <input type="number" step="0.01" [(ngModel)]="form.v2" name="v2" /></label>
+          <label>PCA V3 <input type="number" step="0.01" [(ngModel)]="form.v3" name="v3" /></label>
+        </div>
+        @if (error()) { <p class="error">{{ error() }}</p> }
+        <button type="submit" class="btn-primary" [disabled]="loading()">
+          {{ loading() ? 'ANALYZING...' : 'RUN INVESTIGATION' }}
+        </button>
+      </form>
+    }
+  </div>
+
+  <div class="panel result-panel">
+    <div class="panel-header-mini">INVESTIGATION OUTPUT</div>
+    @if (result()) {
+      <app-prediction-result [result]="result()!" />
+      <button type="button" class="btn-ghost mt-1" (click)="reset()">NEW INVESTIGATION</button>
+    } @else {
+      <div class="empty-state">
+        <div class="scan-line"></div>
+        <p class="muted">AWAITING {{ step() === 'card' ? 'CARD IDENTITY' : 'PARAMETERS' }}...</p>
+      </div>
+    }
+  </div>
+</div>
