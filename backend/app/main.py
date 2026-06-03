@@ -40,6 +40,7 @@ app.include_router(document.router, prefix=prefix)
 app.include_router(orchestrator.router, prefix=prefix)
 app.include_router(analytics.router, prefix=prefix)
 app.include_router(history.router, prefix=prefix)
+app.include_router(websocket.router)
 
 
 @app.get("/health")

@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -10,10 +10,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ParticleFieldComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+  private platformId = inject(PLATFORM_ID);
   private rafId = 0;
   private particles: Array<any> = [];
 
   ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d')!;
 
@@ -75,6 +78,8 @@ export class ParticleFieldComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    cancelAnimationFrame(this.rafId);
+    if (isPlatformBrowser(this.platformId)) {
+      cancelAnimationFrame(this.rafId);
+    }
   }
 }

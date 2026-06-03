@@ -1,119 +1,216 @@
-# 🛡️ AI-Powered Fraud Detection Platform (PFE)
+# 🛡️ FraudShield AI — Enterprise Fraud Intelligence Platform
 
-An intelligent multi-agent platform that integrates **Machine Learning, Natural Language Processing, Computer Vision, and Large Language Models** to detect and investigate various types of fraud.
+## AI-Powered Multi-Agent Fraud Detection & Explainable Intelligence System
 
-## 👥 Team Structure & Features
+FraudShield AI is a real-time **enterprise fraud intelligence platform** designed for detecting, analyzing, and explaining financial fraud using a **multi-agent AI architecture** powered by Machine Learning, Deep Learning, NLP, and Explainable AI (XAI). 
 
-| Agent | Member | Technology | Feature Description |
-|-------|--------|------------|---------------------|
-| **Credit Card Investigator** | Najwa | XGBoost (99.96%) + SHAP | High-precision detection with 0-100 Risk Criticality scoring. |
-| **Phishing Scanner** | Ferdaouss | NLP + LLM | Analyzes emails, messages, and URLs to identify phishing attempts. |
-| **Document Verifier** | Alae | CNN (ResNet50) + Image Processing | Verifies document authenticity and detects potential forgeries. |
+It simulates real-world fraud detection systems used in **fintech companies and financial institutions**. 
 
 ---
 
-## 🚀 Platform Overview
+# 🎯 Problem Statement 
 
-The platform consists of three specialized AI agents working together:
+Financial systems face increasing threats from: 
 
-1.  **Najwa (CreditCardInvestigator)**: An **Enterprise-Grade** system optimized for extreme class imbalance. Achieves **99.96% Accuracy** and **98.2% Precision**. It uses **SHAP (Explainable AI)** to highlight the top influencing features and provides a **0-100 Criticality Scale** for financial investigators.
-2.  **Ferdaouss (PhishingScanner)**: Leverages NLP techniques to scan messages and URLs. It generates security recommendations and explains why a specific message is classified as a threat.
-3.  **Alae (DocumentVerifier)**: Employs a CNN-based model (ResNet50) for image analysis. It can identify document types and flag visual anomalies indicative of tampering or forgery.
+- Credit card fraud 
+- Phishing attacks 
+- Document forgery 
 
----
+Traditional systems are slow, non-transparent, and lack explainability. 
 
-## 📂 Project Structure
-
-```
-fraud-detection-platform/
-├── backend/                 # FastAPI + SQLite + AI Services
-│   ├── app/
-│   │   ├── routers/         # API Endpoints
-│   │   ├── services/        # Business Logic & AI Integration
-│   │   ├── models/          # Database Models (SQLAlchemy)
-│   │   └── schemas/         # Data Validation (Pydantic)
-│   ├── ai/                  # Training scripts & Alae's AI Pipeline
-│   └── ml_models/           # Saved model artifacts (.pkl, .joblib, .pt)
-├── frontend/                # Angular 21 (Modular Feature-based)
-│   └── src/app/features/    # Dedicated modules for Najwa, Ferdaouss, and Alae
-└── docs/                    # Detailed Architecture & Guides
-```
-
-## Prerequisites
-
-- **Python 3.11+**
-- **Node.js 20+** and npm
-- (Optional) GPU for faster PyTorch — CPU works for demo
-
-## Backend setup
-
-```bash
-cd backend
-python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# macOS/Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-cp .env.example .env
-
-# Train demo models (recommended)
-python -m ai.train_credit_card
-python -m ai.train_phishing
-
-# Run API (from backend folder)
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-API docs: http://127.0.0.1:8000/docs
-
-### Authorized Access Accounts (Enterprise Domain)
-
-All accounts use the password: **admin123**
-
-| Email | Role / Agent | Access Level |
-|-------|--------------|--------------|
-| **admin@fraudshield.ai** | Platform Admin | Full Dashboard |
-| **najwa@fraudshield.ai** | CC Investigator | Agent Interface |
-| **ferdaouss@fraudshield.ai** | Phishing Scanner | Agent Interface |
-| **alae@fraudshield.ai** | Document Verifier | Agent Interface |
+👉 FraudShield AI solves this using: 
+- Real-time AI inference 
+- Multi-agent collaboration 
+- Explainable AI (SHAP) 
+- Live streaming architecture 
 
 ---
 
-## Frontend setup
+# 👥 Multi-Agent AI System 
 
-```bash
-cd frontend
-npm install
-npm start
-```
+| Agent | Role | Architecture | Core Function | 
+|------|------|-------------|---------------| 
+| Credit Card Investigator | Najwa | XGBoost + SHAP | Fraud transaction detection + risk scoring | 
+| Phishing Scanner | Ferdaouss | NLP + LLM | Email, URL, and message threat detection | 
+| Document Verifier | Alae | CNN (ResNet50) | Document authentication & forgery detection | 
 
-Open http://localhost:4200 — sign in with your enterprise `@fraudshield.ai` account.
+---
 
-## API endpoints (`/api/v1`)
+# 🧠 System Architecture 
 
-| Method | Path | Agent |
-|--------|------|-------|
-| POST | `/auth/login` | Authentication |
-| POST | `/credit-card-fraud/predict` | Najwa |
-| POST | `/phishing-detection/scan` | Ferdaouss |
-| POST | `/document-verification/verify` | Alae (multipart) |
-| POST | `/orchestrator/analyze` | Multi-agent |
-| GET | `/analytics/summary` | Dashboard KPIs |
-| GET | `/history` | Unified audit log |
+FraudShield AI is built on a **real-time event-driven architecture**: 
 
-## Features
+``` 
 
-- Multi-agent modular architecture
-- Explainable AI (SHAP, keyword signals, LLM-style narratives)
-- SQLite prediction history
-- JWT authentication
-- SaaS-style responsive dashboard with analytics charts
-- Separation: routers → services → models
+Transaction Input 
+ ↓ 
+Feature Engineering Layer 
+ ↓ 
+AI Models (XGBoost / NLP / CNN) 
+ ↓ 
+SHAP Explainability Engine 
+ ↓ 
+Fraud Risk Scoring (0–100) 
+ ↓ 
+WebSocket Streaming Engine 
+ ↓ 
+Angular Dashboard (Real-Time UI) 
 
-## License
+``` 
 
-Academic use — PFE 2026.
+---
+
+# ⚙️ Backend Architecture (FastAPI) 
+
+- FastAPI REST + WebSocket engine 
+- Asynchronous inference pipelines 
+- Multi-agent service orchestration 
+- SHAP Explainability integration 
+- SQLite / structured logging 
+
+### Key Features: 
+- Real-time fraud scoring 
+- Live agent updates 
+- Streaming JSON payloads 
+- Low-latency inference (<15ms) 
+
+---
+
+# 💻 Frontend Architecture (Angular 21) 
+
+- Real-time Cyber Intelligence Dashboard 
+- WebSocket-driven UI updates 
+- RxJS + Angular Signals 
+- Glassmorphism UI design 
+- Live charts & fraud streams 
+
+### UI Modules: 
+- Fraud Analytics Dashboard 
+- Agent Activity Monitor 
+- Explainable AI (XAI) Panel 
+- Real-time Fraud Stream Viewer 
+
+---
+
+# 🔄 Real-Time Intelligence Flow 
+
+1. Transaction is received 
+2. Feature engineering is applied 
+3. AI model predicts fraud probability 
+4. SHAP explains decision (feature impact) 
+5. Risk score is generated (0–100) 
+6. WebSocket broadcasts live update 
+7. Angular dashboard updates instantly 
+
+---
+
+# 📊 Key Features 
+
+- Real-time fraud detection system 
+- Multi-agent AI collaboration 
+- Explainable AI (SHAP integration) 
+- Live WebSocket streaming dashboard 
+- Risk scoring engine (0–100) 
+- Fraud, phishing, and document detection 
+- Enterprise-grade UI/UX 
+
+---
+
+# 🔐 Authentication System 
+
+All access is restricted to `@fraudshield.ai` domain. 
+
+| Email | Role | 
+|------|------| 
+| admin@fraudshield.ai | Platform Administrator | 
+| najwa@fraudshield.ai | Credit Card Investigator | 
+| ferdaouss@fraudshield.ai | Phishing Analyst | 
+| alae@fraudshield.ai | Document Verifier | 
+
+Password for demo: `admin123` 
+
+---
+
+# 🧪 Tech Stack 
+
+### Backend 
+- FastAPI 
+- Python 3.11 
+- XGBoost 
+- SHAP 
+- PyTorch / CNN 
+- WebSockets 
+
+### Frontend 
+- Angular 21 
+- RxJS 
+- TypeScript 
+- SCSS 
+- Chart.js / D3.js 
+
+---
+
+# 📂 Project Structure 
+
+``` 
+
+fraud-detection-platform/ 
+├── backend/ 
+│   ├── app/ 
+│   │   ├── routers/ 
+│   │   ├── services/ 
+│   │   ├── models/ 
+│   │   └── schemas/ 
+│   ├── ai/ 
+│   └── ml_models/ 
+├── frontend/ 
+│   ├── src/app/pages/ 
+│   ├── src/app/services/ 
+│   └── src/app/layout/ 
+ └── README.md 
+
+ ``` 
+
+---
+
+# 🚀 Why This Project Matters 
+
+FraudShield AI demonstrates a real-world implementation of: 
+
+- Production-level AI system design 
+- Explainable AI for financial transparency 
+- Real-time streaming architectures 
+- Multi-agent intelligence systems 
+
+It simulates a system used in: 
+
+- Banks 
+- Fintech companies 
+- Fraud investigation teams 
+
+---
+
+# ⚖️ Academic Context 
+
+Final Year Project (PFE 2026) 
+
+Focus Areas: 
+- Artificial Intelligence 
+- Cybersecurity 
+- Financial Fraud Detection 
+- Explainable Machine Learning 
+
+---
+
+# 🏁 Conclusion 
+
+FraudShield AI is a complete end-to-end AI fraud intelligence system combining: 
+
+ ✔ Machine Learning  
+ ✔ Deep Learning  
+ ✔ NLP  
+ ✔ Explainable AI  
+ ✔ Real-time WebSocket architecture  
+ ✔ Enterprise dashboard design  
+
+ --- 

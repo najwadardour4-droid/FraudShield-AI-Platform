@@ -1,167 +1,137 @@
-<div class="cyber-dashboard">
-  <!-- Top Stats Grid -->
-  <div class="stats-grid">
-    <div class="stat-panel accuracy-panel">
-      <div class="panel-header">
-        <svg lucideActivity size="14"></svg>
-        <span>SYSTEM ACCURACY</span>
-      </div>
-      <div class="gauge-container">
-        <div class="gauge">
+<div class="fraud-ops-center">
+  <!-- 2. MAIN VISUAL ANALYTICS -->
+  <div class="visual-row">
+    <!-- LEFT: Glowing Circular Gauge -->
+    <div class="visual-panel gauge-panel">
+      <div class="panel-header">FRAUD DETECTION ACCURACY</div>
+      <div class="gauge-display">
+        <div class="gauge-ring">
           <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" class="gauge-bg"></circle>
-            <circle cx="50" cy="50" r="45" class="gauge-fill" 
-              [style.stroke-dashoffset]="282.7 - (282.7 * 0.977)"></circle>
+            <circle cx="50" cy="50" r="45" class="bg"></circle>
+            <circle cx="50" cy="50" r="45" class="fill" style="stroke-dashoffset: 0.1"></circle>
           </svg>
           <div class="gauge-value">
-            <span class="value">97.7%</span>
-            <span class="label">NETWORK STRENGTH</span>
+            <span class="num">99.96%</span>
+            <span class="lab">MODEL CONFIDENCE</span>
           </div>
         </div>
       </div>
-      <div class="panel-footer">
-        <div class="meta-item">
-          <span class="meta-label">UPTIME</span>
-          <span class="meta-value">99.98%</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">LATENCY</span>
-          <span class="meta-value">12ms</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">THREAT LEVEL</span>
-          <span class="meta-value elevated">ELEVATED</span>
-        </div>
+      <div class="panel-metrics">
+        <div class="m-box"><span class="m-l">PROCESSED TODAY</span><span class="m-v">{{ processedToday() | number }}</span></div>
+        <div class="m-box"><span class="m-l">AVG INFERENCE</span><span class="m-v">{{ inferenceTime() }}ms</span></div>
+        <div class="m-box"><span class="m-l">RISK CRITICALITY</span><span class="m-v high">HIGH</span></div>
       </div>
     </div>
 
-    <div class="stat-panel monitoring-panel">
+    <!-- RIGHT: Dynamic Live Histogram -->
+    <div class="visual-panel histogram-panel">
       <div class="panel-header">
-        <svg lucideActivity size="14"></svg>
-        <span>LIVE COMMUNICATION MONITORING</span>
-        <div class="threat-tag">THREAT ACTIVE</div>
+        REAL-TIME FRAUD ANALYSIS STREAM
+        <span class="engine-tag">XAI EXPLAINABILITY ENGINE: ACTIVE (SHAP)</span>
       </div>
-      <div class="monitoring-content">
-        <div class="wave-display">
-          <div class="rec-indicator">
-            <span class="rec-dot"></span>
-            REC 00:47:23
+      <div class="histogram-display">
+        <div class="bars-container">
+          @for (h of histogramBars(); track $index) {
+            <div class="bar" [style.height.%]="h"></div>
+          }
+        </div>
+      </div>
+      <div class="investigation-status">
+        <div class="status-info">
+          <span>TRANSACTIONS UNDER INVESTIGATION</span>
+          <span>SCAN RATE: 420 TX/SEC</span>
+        </div>
+        <div class="status-progress"><div class="fill" style="width: 72%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 & 4. XAI PANEL & AGENT FLEET -->
+  <div class="intelligence-row">
+    <!-- XAI PANEL -->
+    <section class="panel xai-panel">
+      <div class="panel-header">EXPLAINABLE AI INSIGHTS</div>
+      <div class="xai-content">
+        <div class="xai-metrics">
+          <div class="x-stat"><span class="l">Fraud Probability</span><span class="v danger">94.2%</span></div>
+          <div class="x-stat"><span class="l">Model Confidence</span><span class="v success">99.96%</span></div>
+        </div>
+        <div class="risk-drivers">
+          <h5>TOP RISK DRIVERS</h5>
+          @for (d of riskDrivers(); track d.label) {
+            <div class="driver">
+              <span>{{ d.label }}</span>
+              <span class="impact">{{ d.impact }}</span>
+            </div>
+          }
+        </div>
+        <div class="decision-box">
+          <strong>DECISION:</strong> High-risk fraudulent behavior detected.
+          <p>RECOMMENDED ACTION: Escalate for manual review.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENT FLEET -->
+    <div class="agent-fleet">
+      @for (agent of agents(); track agent.id) {
+        <div class="agent-card">
+          <div class="card-glow"></div>
+          <div class="card-header">
+            <div class="agent-meta">
+              <h3>{{ agent.name }}</h3>
+              <span class="sub">Spec: {{ agent.specialist }} | {{ agent.tech }}</span>
+            </div>
+            <div class="status-badge">
+              <span class="dot"></span>
+              {{ agent.status }}
+            </div>
           </div>
-          <div class="neural-status">NEURAL NET: ACTIVE</div>
-          <div class="waveform">
-            @for (h of waveformBars(); track $index) {
-              <div class="bar" [style.height.%]="h"></div>
+          <div class="terminal-box">
+            @for (log of agent.logs; track log) {
+              <div class="log-line">> {{ log }}</div>
             }
           </div>
-          <div class="integrity-card">
-            <div class="card-header">NEURAL INTEGRITY</div>
-            <div class="card-value">99.0% AUTHENTIC</div>
-            <div class="mini-wave"></div>
-          </div>
         </div>
-        <div class="scan-progress">
-          <div class="progress-label">
-            <span>SCAN PROGRESS</span>
-            <span>46%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 46%"></div>
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 
-  <!-- KPI Cards Row -->
-  <div class="kpi-grid">
+  <!-- 5. ENTERPRISE FRAUD KPIs -->
+  <div class="kpi-row">
     @if (analytics(); as a) {
       <div class="kpi-card">
-        <div class="kpi-icon"><svg lucideActivity></svg></div>
-        <div class="kpi-content">
-          <span class="kpi-label">TOTAL PREDICTIONS</span>
-          <span class="kpi-value">{{ a.total_predictions }}</span>
-        </div>
-      </div>
-      <div class="kpi-card danger">
-        <div class="kpi-icon"><svg lucideAlertTriangle></svg></div>
-        <div class="kpi-content">
-          <span class="kpi-label">FLAGGED ALERTS</span>
-          <span class="kpi-value">{{ a.total_flagged }}</span>
-        </div>
+        <svg lucideAlertTriangle size="14"></svg>
+        <div class="k-data"><span class="v">{{ a.total_flagged }}</span><span class="l">Fraud Cases Detected</span></div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon"><svg lucideTrendingUp></svg></div>
-        <div class="kpi-content">
-          <span class="kpi-label">DETECTION RATE</span>
-          <span class="kpi-value">98.4%</span>
-        </div>
+        <svg lucideBarChart3 size="14"></svg>
+        <div class="k-data"><span class="v">{{ a.total_predictions | number }}</span><span class="l">Transactions Today</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideShieldCheck size="14"></svg>
+        <div class="k-data"><span class="v">1,204</span><span class="l">Phishing Blocked</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideFileText size="14"></svg>
+        <div class="k-data"><span class="v">856</span><span class="l">Documents Verified</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideActivity size="14"></svg>
+        <div class="k-data"><span class="v">42</span><span class="l">Active Investigations</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideTrendingUp size="14"></svg>
+        <div class="k-data"><span class="v">98.4%</span><span class="l">Avg Confidence Score</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideCheckCircle size="14"></svg>
+        <div class="k-data"><span class="v">0.04%</span><span class="l">False Positive Rate</span></div>
+      </div>
+      <div class="kpi-card">
+        <svg lucideShield size="14"></svg>
+        <div class="k-data"><span class="v">100%</span><span class="l">AI Decisions Explained</span></div>
       </div>
     }
-  </div>
-
-  <!-- Main Grid Bottom -->
-  <div class="bottom-grid">
-    <section class="panel data-stream">
-      <div class="panel-header">
-        <svg lucideActivity size="14"></svg>
-        <span>INTELLIGENT MULTI-AGENT COLLABORATION</span>
-      </div>
-      <div class="stream-content">
-        <!-- Collaboration Logs -->
-        <div class="collaboration-log">
-          <div class="log-entry info">
-            <span class="l-tag">[SYSTEM]</span>
-            <span class="l-msg">Orchestrator active. Cross-agent communication synchronized.</span>
-          </div>
-          <div class="log-entry alert">
-            <span class="l-tag">[PHISHING_SCANNER]</span>
-            <span class="l-msg">Detected suspicious source IP 192.168.1.105 (Ferdaouss)</span>
-          </div>
-          <div class="log-entry action">
-            <span class="l-tag">[COLLABORATION]</span>
-            <span class="l-msg">Alerting CreditCardInvestigator to flag high-risk transactions from IP source.</span>
-          </div>
-          <div class="log-entry info">
-            <span class="l-tag">[DOCUMENT_VERIFIER]</span>
-            <span class="l-msg">Scan complete: Verification results pushed to unified Audit Log.</span>
-          </div>
-        </div>
-        
-        <div class="divider"></div>
-
-        @if (analytics(); as a) {
-          @for (r of a.recent_flagged; track r.id) {
-            <div class="stream-item">
-              <span class="timestamp">[{{ r.created_at | date:'HH:mm:ss' }}]</span>
-              <span class="agent-tag">{{ agentLabel(r.agent) }}</span>
-              <span class="verdict-tag" [class.danger]="true">{{ r.verdict }}</span>
-              <span class="summary">{{ r.summary }}</span>
-            </div>
-          }
-        }
-      </div>
-    </section>
-
-    <section class="panel control-panel">
-      <div class="panel-header">
-        <svg lucideTrendingUp size="14"></svg>
-        <span>AGENT EFFICIENCY</span>
-      </div>
-      <div class="efficiency-list">
-        @if (analytics(); as a) {
-          @for (row of a.by_agent; track row.agent) {
-            <div class="efficiency-item">
-              <div class="item-info">
-                <span class="label">{{ agentLabel(row.agent) }}</span>
-                <span class="value">{{ barWidth(row.flagged, row.total) }}%</span>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-fill" [style.width.%]="barWidth(row.flagged, row.total)"></div>
-              </div>
-            </div>
-          }
-        }
-      </div>
-    </section>
   </div>
 </div>
