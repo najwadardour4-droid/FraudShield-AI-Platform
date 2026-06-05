@@ -127,7 +127,6 @@ All access is restricted to `@fraudshield.ai` domain.
 | ferdaouss@fraudshield.ai | Phishing Analyst | 
 | alae@fraudshield.ai | Document Verifier | 
 
-Password for demo: `**********` # Provided in presentation technical annex 
 
 ---
 
