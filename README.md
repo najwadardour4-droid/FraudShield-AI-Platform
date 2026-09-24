@@ -264,5 +264,3 @@ The project combines an AI layer with a modern Full-Stack architecture to create
 
 Licence in Data Analysis — FST Tangier
 
-Main contribution:
-**Credit Card Fraud Detection — XGBoost + SHAP**
