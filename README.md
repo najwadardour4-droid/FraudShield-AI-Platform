@@ -1,215 +1,252 @@
 # 🛡️ FraudShield AI — Enterprise Fraud Intelligence Platform
 
-## AI-Powered Multi-Agent Fraud Detection & Explainable Intelligence System
+## AI-Powered Fraud Detection & Explainable Intelligence System
 
-FraudShield AI is a real-time **enterprise fraud intelligence platform** designed for detecting, analyzing, and explaining financial fraud using a **multi-agent AI architecture** powered by Machine Learning, Deep Learning, NLP, and Explainable AI (XAI). 
+FraudShield AI is an end-to-end fraud intelligence platform developed as a **2026 Final Year Project (PFE)**.
 
-It simulates real-world fraud detection systems used in **fintech companies and financial institutions**. 
+The platform combines **Machine Learning, Deep Learning, NLP, Explainable AI (XAI), and real-time web technologies** to detect and analyze different types of fraud.
 
----
-
-# 🎯 Problem Statement 
-
-Financial systems face increasing threats from: 
-
-- Credit card fraud 
-- Phishing attacks 
-- Document forgery 
-
-Traditional systems are slow, non-transparent, and lack explainability. 
-
-👉 FraudShield AI solves this using: 
-- Real-time AI inference 
-- Multi-agent collaboration 
-- Explainable AI (SHAP) 
-- Live streaming architecture 
+The system includes a **FastAPI backend**, an **Angular frontend**, AI-based detection modules, and **WebSocket communication** for real-time updates.
 
 ---
 
-# 👥 Multi-Agent AI System 
+## 🎯 Project Overview
 
-| Agent | Role | Architecture | Core Function | 
-|------|------|-------------|---------------| 
-| Credit Card Investigator | Najwa | XGBoost + SHAP | Fraud transaction detection + risk scoring | 
-| Phishing Scanner | Ferdaouss | NLP + LLM | Email, URL, and message threat detection | 
-| Document Verifier | Alae | CNN (ResNet50) | Document authentication & forgery detection | 
+Financial systems can face multiple types of threats, including:
 
----
+- 💳 Credit card fraud
+- 🎣 Phishing attacks
+- 📄 Document forgery
 
-# 🧠 System Architecture 
+FraudShield AI aims to provide an intelligent system capable of:
 
-FraudShield AI is built on a **real-time event-driven architecture**: 
-
-``` 
-
-Transaction Input 
- ↓ 
-Feature Engineering Layer 
- ↓ 
-AI Models (XGBoost / NLP / CNN) 
- ↓ 
-SHAP Explainability Engine 
- ↓ 
-Fraud Risk Scoring (0–100) 
- ↓ 
-WebSocket Streaming Engine 
- ↓ 
-Angular Dashboard (Real-Time UI) 
-
-``` 
+- Detecting suspicious activities
+- Assigning a fraud risk score
+- Explaining ML predictions using SHAP
+- Monitoring AI agents in real time
+- Displaying results through an interactive dashboard
 
 ---
 
-# ⚙️ Backend Architecture (FastAPI) 
+## 👥 Multi-Agent Architecture
 
-- FastAPI REST + WebSocket engine 
-- Asynchronous inference pipelines 
-- Multi-agent service orchestration 
-- SHAP Explainability integration 
-- SQLite / structured logging 
+The project is organized into specialized AI modules:
 
-### Key Features: 
-- Real-time fraud scoring 
-- Live agent updates 
-- Streaming JSON payloads 
-- Low-latency inference (<15ms) 
+| Agent | Responsibility | Technology |
+|------|----------------|------------|
+| Credit Card Investigator | Transaction fraud detection & risk scoring | XGBoost + SHAP |
+| Phishing Scanner | Phishing and malicious content detection | NLP + LLM |
+| Document Verifier | Document authenticity analysis | CNN / ResNet50 |
 
----
+### My Contribution
 
-# 💻 Frontend Architecture (Angular 21) 
+I worked primarily on the **Credit Card Investigator** module.
 
-- Real-time Cyber Intelligence Dashboard 
-- WebSocket-driven UI updates 
-- RxJS + Angular Signals 
-- Glassmorphism UI design 
-- Live charts & fraud streams 
+My responsibilities included:
 
-### UI Modules: 
-- Fraud Analytics Dashboard 
-- Agent Activity Monitor 
-- Explainable AI (XAI) Panel 
-- Real-time Fraud Stream Viewer 
+- Data preprocessing and feature engineering
+- Machine Learning model development
+- Fraud prediction using XGBoost
+- Explainability using SHAP
+- Risk score generation
+- Backend/API integration
+- Integration with the real-time dashboard
 
 ---
 
-# 🔄 Real-Time Intelligence Flow 
+## 🧠 System Architecture
 
-1. Transaction is received 
-2. Feature engineering is applied 
-3. AI model predicts fraud probability 
-4. SHAP explains decision (feature impact) 
-5. Risk score is generated (0–100) 
-6. WebSocket broadcasts live update 
-7. Angular dashboard updates instantly 
+```text
+User / Transaction Input
+        ↓
+Feature Engineering
+        ↓
+AI Detection Modules
+(XGBoost / NLP / CNN)
+        ↓
+Prediction & Analysis
+        ↓
+SHAP Explainability
+        ↓
+Fraud Risk Score
+        ↓
+FastAPI Backend
+        ↓
+WebSocket Communication
+        ↓
+Angular Dashboard
 
----
+## ⚙️ Backend
 
-# 📊 Key Features 
+The backend was developed using **FastAPI and Python**, providing REST APIs, real-time communication, and integration with the AI detection modules.
 
-- Real-time fraud detection system 
-- Multi-agent AI collaboration 
-- Explainable AI (SHAP integration) 
-- Live WebSocket streaming dashboard 
-- Risk scoring engine (0–100) 
-- Fraud, phishing, and document detection 
-- Enterprise-grade UI/UX 
+### Main Components
 
----
+- 🔌 REST API
+- ⚡ WebSocket communication
+- 🤖 AI model integration
+- 🔄 Asynchronous processing
+- ✅ Data validation
+- 📊 Fraud risk scoring
+- 🔍 SHAP explainability
+- 📝 Structured logging
 
-# 🔐 Authentication System 
+### Backend Technologies
 
-All access is restricted to `@fraudshield.ai` domain. 
-
-| Email | Role | 
-|------|------| 
-| admin@fraudshield.ai | Platform Administrator | 
-| najwa@fraudshield.ai | Credit Card Investigator | 
-| ferdaouss@fraudshield.ai | Phishing Analyst | 
-| alae@fraudshield.ai | Document Verifier | 
-
-
----
-
-# 🧪 Tech Stack 
-
-### Backend 
-- FastAPI 
-- Python 3.11 
-- XGBoost 
-- SHAP 
-- PyTorch / CNN 
-- WebSockets 
-
-### Frontend 
-- Angular 21 
-- RxJS 
-- TypeScript 
-- SCSS 
-- Chart.js / D3.js 
+- 🐍 Python 3.11
+- ⚡ FastAPI
+- 🌳 XGBoost
+- 🔎 SHAP
+- 🧠 PyTorch
+- 🔄 WebSockets
+- 🗄️ SQLite
 
 ---
 
-# 📂 Project Structure 
+## 💻 Frontend
 
-``` 
+The frontend provides an interactive dashboard for monitoring fraud detection results, AI agents, and real-time events.
 
-fraud-detection-platform/ 
-├── backend/ 
-│   ├── app/ 
-│   │   ├── routers/ 
-│   │   ├── services/ 
-│   │   ├── models/ 
-│   │   └── schemas/ 
-│   ├── ai/ 
-│   └── ml_models/ 
-├── frontend/ 
-│   ├── src/app/pages/ 
-│   ├── src/app/services/ 
-│   └── src/app/layout/ 
- └── README.md 
+### Main Features
 
- ``` 
+- ⚡ Real-time fraud monitoring
+- 📊 Fraud analytics dashboard
+- 🤖 AI agent activity monitoring
+- 🔍 Explainable AI visualization
+- 📡 Live fraud event stream
+- 📈 Interactive charts
 
----
+### Frontend Technologies
 
-# 🚀 Why This Project Matters 
-
-FraudShield AI demonstrates a real-world implementation of: 
-
-- Production-level AI system design 
-- Explainable AI for financial transparency 
-- Real-time streaming architectures 
-- Multi-agent intelligence systems 
-
-It simulates a system used in: 
-
-- Banks 
-- Fintech companies 
-- Fraud investigation teams 
+- 🅰️ Angular 21
+- 📘 TypeScript
+- 🔄 RxJS
+- ⚡ Angular Signals
+- 🎨 SCSS
+- 📊 Chart.js / D3.js
 
 ---
 
-# ⚖️ Academic Context 
+## 🔄 Real-Time Detection Flow
 
-Final Year Project (PFE 2026) 
-
-Focus Areas: 
-- Artificial Intelligence 
-- Cybersecurity 
-- Financial Fraud Detection 
-- Explainable Machine Learning 
+1. 📥 A transaction is received by the system.
+2. ⚙️ Input data is processed and transformed.
+3. 🧠 The XGBoost model predicts the probability of fraud.
+4. 🔍 SHAP identifies the main features influencing the prediction.
+5. 📊 A fraud risk score is generated.
+6. 🔌 The result is processed by the backend.
+7. ⚡ WebSocket communication updates the dashboard in real time.
 
 ---
 
-# 🏁 Conclusion 
+## 📊 Key Features
 
-FraudShield AI is a complete end-to-end AI fraud intelligence system combining: 
+- 💳 Credit card fraud detection
+- 🤖 Multi-agent AI architecture
+- 🧠 Machine Learning with XGBoost
+- 🔍 Explainable AI with SHAP
+- ⚡ Real-time WebSocket communication
+- 📈 Interactive fraud analytics
+- 🎣 Phishing detection module
+- 📄 Document verification module
+- 🖥️ Full-Stack web architecture
 
- ✔ Machine Learning  
- ✔ Deep Learning  
- ✔ NLP  
- ✔ Explainable AI  
- ✔ Real-time WebSocket architecture  
- ✔ Enterprise dashboard design  
+---
 
- --- 
+## 🛠️ Tech Stack
+
+### Backend
+
+- 🐍 Python
+- ⚡ FastAPI
+- 🌳 XGBoost
+- 🔎 SHAP
+- 🧠 PyTorch
+- 🔄 WebSockets
+
+### Frontend
+
+- 🅰️ Angular 21
+- 📘 TypeScript
+- 🔄 RxJS
+- ⚡ Angular Signals
+- 🎨 SCSS
+- 📊 Chart.js / D3.js
+
+### Data & Database
+
+- 🐼 Pandas
+- 🔢 NumPy
+- 🗄️ SQLite
+- 💾 SQL
+
+### Development Tools
+
+- 🔧 Git
+- 🐙 GitHub
+- 💻 VS Code
+
+---
+
+## 📂 Project Structure
+
+```text
+fraud-detection-platform/
+│
+├── backend/
+│   ├── app/
+│   │   ├── routers/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── schemas/
+│   │
+│   ├── ai/
+│   └── ml_models/
+│
+├── frontend/
+│   └── src/
+│       └── app/
+│           ├── pages/
+│           ├── services/
+│           └── layout/
+│
+└── README.md
+
+🎓 Academic Context
+
+Final Year Project (PFE) — 2026
+
+Focus Areas
+🤖 Artificial Intelligence
+🧠 Machine Learning
+🔍 Explainable AI
+🔐 Cybersecurity
+💳 Financial Fraud Detection
+🖥️ Full-Stack Development
+⚡ Real-Time Web Applications
+🚀 Skills Demonstrated
+
+This project allowed me to develop practical experience across AI, backend, frontend, and data technologies:
+
+🐍 Python development
+🔌 REST API development
+🖥️ Full-Stack web development
+🧠 Machine Learning
+🧹 Data preprocessing
+🔗 AI model integration
+🔍 Explainable AI
+⚡ Real-time communication
+🗄️ Database integration
+🎨 Frontend development
+🔧 Git & GitHub
+📌 Project Goal
+
+FraudShield AI demonstrates how AI models can be integrated into a complete web application to support fraud detection, analysis, explainability, and real-time monitoring.
+
+The project combines an AI layer with a modern Full-Stack architecture to create an end-to-end intelligent application.
+
+👩‍💻 Author
+
+Najwa Dardour
+
+Licence in Data Analysis — FST Tangier
