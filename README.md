@@ -75,81 +75,84 @@ FastAPI Backend
 WebSocket Communication
         ↓
 Angular Dashboard
+```
+
+---
 
 ## ⚙️ Backend
 
-The backend was developed using **FastAPI and Python**, providing REST APIs, real-time communication, and integration with the AI detection modules.
+The backend was developed using **FastAPI and Python**.
 
-### Main Components
+### Main components
 
-- 🔌 REST API
-- ⚡ WebSocket communication
-- 🤖 AI model integration
-- 🔄 Asynchronous processing
-- ✅ Data validation
-- 📊 Fraud risk scoring
-- 🔍 SHAP explainability
-- 📝 Structured logging
+* REST API
+* WebSocket communication
+* AI model integration
+* Asynchronous processing
+* Data validation
+* Fraud risk scoring
+* SHAP explainability
+* Structured logging
 
 ### Backend Technologies
 
-- 🐍 Python 3.11
-- ⚡ FastAPI
-- 🌳 XGBoost
-- 🔎 SHAP
-- 🧠 PyTorch
-- 🔄 WebSockets
-- 🗄️ SQLite
+* Python 3.11
+* FastAPI
+* XGBoost
+* SHAP
+* PyTorch
+* WebSockets
+* SQLite
 
 ---
 
 ## 💻 Frontend
 
-The frontend provides an interactive dashboard for monitoring fraud detection results, AI agents, and real-time events.
+The frontend provides an interactive dashboard for monitoring fraud detection results and AI agent activity.
 
-### Main Features
+### Main features
 
-- ⚡ Real-time fraud monitoring
-- 📊 Fraud analytics dashboard
-- 🤖 AI agent activity monitoring
-- 🔍 Explainable AI visualization
-- 📡 Live fraud event stream
-- 📈 Interactive charts
+* Real-time fraud monitoring
+* Fraud analytics dashboard
+* AI agent activity monitoring
+* Explainable AI visualization
+* Live fraud event stream
+* Interactive charts
 
 ### Frontend Technologies
 
-- 🅰️ Angular 21
-- 📘 TypeScript
-- 🔄 RxJS
-- ⚡ Angular Signals
-- 🎨 SCSS
-- 📊 Chart.js / D3.js
+* Angular 21
+* TypeScript
+* RxJS
+* Angular Signals
+* SCSS
+* Chart.js / D3.js
 
 ---
 
 ## 🔄 Real-Time Detection Flow
 
-1. 📥 A transaction is received by the system.
-2. ⚙️ Input data is processed and transformed.
-3. 🧠 The XGBoost model predicts the probability of fraud.
-4. 🔍 SHAP identifies the main features influencing the prediction.
-5. 📊 A fraud risk score is generated.
-6. 🔌 The result is processed by the backend.
-7. ⚡ WebSocket communication updates the dashboard in real time.
+1. A transaction is received by the system.
+2. Input data is processed and transformed.
+3. The XGBoost model predicts the probability of fraud.
+4. SHAP identifies the main features influencing the prediction.
+5. A risk score is generated.
+6. The result is sent through the backend.
+7. WebSocket communication updates the dashboard in real time.
 
 ---
 
 ## 📊 Key Features
 
-- 💳 Credit card fraud detection
-- 🤖 Multi-agent AI architecture
-- 🧠 Machine Learning with XGBoost
-- 🔍 Explainable AI with SHAP
-- ⚡ Real-time WebSocket communication
-- 📈 Interactive fraud analytics
-- 🎣 Phishing detection module
-- 📄 Document verification module
-- 🖥️ Full-Stack web architecture
+* 💳 Credit card fraud detection
+* 🤖 Multi-agent AI architecture
+* 🧠 Machine Learning with XGBoost
+* 🔍 Explainable AI with SHAP
+* ⚡ Real-time WebSocket communication
+* 📈 Interactive fraud analytics
+* 🎣 Phishing detection module
+* 📄 Document verification module
+* 🖥️ Full-Stack web architecture
 
 ---
 
@@ -157,34 +160,32 @@ The frontend provides an interactive dashboard for monitoring fraud detection re
 
 ### Backend
 
-- 🐍 Python
-- ⚡ FastAPI
-- 🌳 XGBoost
-- 🔎 SHAP
-- 🧠 PyTorch
-- 🔄 WebSockets
+* Python
+* FastAPI
+* XGBoost
+* SHAP
+* PyTorch
 
 ### Frontend
 
-- 🅰️ Angular 21
-- 📘 TypeScript
-- 🔄 RxJS
-- ⚡ Angular Signals
-- 🎨 SCSS
-- 📊 Chart.js / D3.js
+* Angular
+* TypeScript
+* RxJS
+* SCSS
+* Chart.js / D3.js
 
 ### Data & Database
 
-- 🐼 Pandas
-- 🔢 NumPy
-- 🗄️ SQLite
-- 💾 SQL
+* Pandas
+* NumPy
+* SQLite
+* SQL
 
 ### Development Tools
 
-- 🔧 Git
-- 🐙 GitHub
-- 💻 VS Code
+* Git
+* GitHub
+* VS Code
 
 ---
 
@@ -211,42 +212,57 @@ fraud-detection-platform/
 │           └── layout/
 │
 └── README.md
+```
 
-🎓 Academic Context
+---
 
-Final Year Project (PFE) — 2026
+## 🎓 Academic Context
 
-Focus Areas
-🤖 Artificial Intelligence
-🧠 Machine Learning
-🔍 Explainable AI
-🔐 Cybersecurity
-💳 Financial Fraud Detection
-🖥️ Full-Stack Development
-⚡ Real-Time Web Applications
-🚀 Skills Demonstrated
+**Final Year Project (PFE) — 2026**
 
-This project allowed me to develop practical experience across AI, backend, frontend, and data technologies:
+### Focus Areas
 
-🐍 Python development
-🔌 REST API development
-🖥️ Full-Stack web development
-🧠 Machine Learning
-🧹 Data preprocessing
-🔗 AI model integration
-🔍 Explainable AI
-⚡ Real-time communication
-🗄️ Database integration
-🎨 Frontend development
-🔧 Git & GitHub
-📌 Project Goal
+* Artificial Intelligence
+* Machine Learning
+* Explainable AI
+* Cybersecurity
+* Financial Fraud Detection
+* Full-Stack Development
+* Real-Time Web Applications
 
-FraudShield AI demonstrates how AI models can be integrated into a complete web application to support fraud detection, analysis, explainability, and real-time monitoring.
+---
+
+## 🚀 Skills Demonstrated
+
+This project allowed me to work across several areas of software and AI development:
+
+* Python development
+* REST API development
+* Full-Stack web development
+* Machine Learning
+* Data preprocessing
+* Model integration
+* Explainable AI
+* Real-time communication
+* Database integration
+* Frontend development
+* Git & GitHub
+
+---
+
+## 📌 Project Goal
+
+FraudShield AI demonstrates how AI models can be integrated into a complete web application to support **fraud detection, analysis, explainability, and real-time monitoring**.
 
 The project combines an AI layer with a modern Full-Stack architecture to create an end-to-end intelligent application.
 
-👩‍💻 Author
+---
 
-Najwa Dardour
+## 👩‍💻 Author
+
+**Najwa Dardour**
 
 Licence in Data Analysis — FST Tangier
+
+Main contribution:
+**Credit Card Fraud Detection — XGBoost + SHAP**
